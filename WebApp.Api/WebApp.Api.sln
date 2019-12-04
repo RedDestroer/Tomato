@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.Api", "WebApp.Api\WebApp.Api.csproj", "{0D054770-FAFA-493D-9B25-21888B2BBE75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp.Api", "WebApp.Api\WebApp.Api.csproj", "{0D054770-FAFA-493D-9B25-21888B2BBE75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.App", "WebApp.App\WebApp.App.csproj", "{136D8FE1-F613-4E24-AC7F-E9607D48FC36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp.App", "WebApp.App\WebApp.App.csproj", "{136D8FE1-F613-4E24-AC7F-E9607D48FC36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.App.Tests", "WebApp.App.Tests\WebApp.App.Tests.csproj", "{6E0058ED-68FC-42AD-89E3-B7015FCBC27B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp.App.Tests", "WebApp.App.Tests\WebApp.App.Tests.csproj", "{6E0058ED-68FC-42AD-89E3-B7015FCBC27B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{51A77A9D-08CE-4ED6-B036-88FAE2ECC5BD}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

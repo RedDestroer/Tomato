@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "nyc": "^14.1.1",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   }
 }

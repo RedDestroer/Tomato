@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Api", "Auth0.Api\Auth0.Api.csproj", "{7362A264-8F1D-4BEE-9120-A8D737476519}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.Api", "Auth0.Api\Auth0.Api.csproj", "{7362A264-8F1D-4BEE-9120-A8D737476519}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{6C900011-370A-4493-AFCA-DAD29564BF3B}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

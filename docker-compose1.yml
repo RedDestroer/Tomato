@@ -1,0 +1,133 @@
+version: "3.7"
+services:
+  webapp.api:
+    image: webappapi:dev
+    
+    build:
+      dockerfile: ./WebApp.Api/Dockerfile
+      context: ./WebApp.Api
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: WebApp.Api
+      target: base
+      
+    container_name: WebApp.Api
+      
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "https://+:5051;http://+:5050"
+      ASPNETCORE_HTTPS_PORT: 5051
+      NUGET_FALLBACK_PACKAGES: "/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2"
+      NUGET_PACKAGES: "/root/.nuget/fallbackpackages2"
+      DOTNET_USE_POLLING_FILE_WATCHER: 1
+
+    ports:
+    - "5050:5050"
+    - "5051:5051"
+
+    entrypoint: tail -f /dev/null
+    
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  "bin/Debug/netcoreapp2.2/WebApp.Api.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidofdotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+      
+    tty: true
+    
+    volumes:
+    - ./WebApp.Api:/src:rw
+    - ./WebApp.Api/WebApp.Api:/app:rw
+    - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+    - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    - ${ProgramFiles}/dotnet/sdk/NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - ${UserProfile}/vsdbg/vs2017u5:/remote_debugger:rw
+    - ${UserProfile}/.nuget/packages:/root/.nuget/packages:ro
+
+  auth0.api:
+    image: auth0api:dev
+  
+    build:
+      dockerfile: ./Auth0.Api/Dockerfile
+      context: ./Auth0.Api
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Auth0.Api
+      target: base
+      
+    container_name: Auth0.Api
+      
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "https://+:5061;http://+:5060"
+      ASPNETCORE_HTTPS_PORT: 5061
+      NUGET_FALLBACK_PACKAGES: "/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2"
+      NUGET_PACKAGES: "/root/.nuget/fallbackpackages2"
+      DOTNET_USE_POLLING_FILE_WATCHER: 1
+
+    ports:
+    - "5060:5060"
+    - "5061:5061"
+
+    entrypoint: tail -f /dev/null
+    
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  "bin/Debug/netcoreapp2.2/Auth0.Api.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidofdotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+      
+    tty: true
+    
+    volumes:
+    - ./Auth0.Api:/src:rw
+    - ./Auth0.Api/Auth0.Api:/app:rw
+    - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+    - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    - ${ProgramFiles}/dotnet/sdk/NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - ${UserProfile}/vsdbg/vs2017u5:/remote_debugger:rw
+    - ${UserProfile}/.nuget/packages:/root/.nuget/packages:ro
+
+  vendor.api:
+    image: vendorapi:dev
+
+    build:
+      dockerfile: ./Vendor.Api/Dockerfile
+      context: ./Vendor.Api
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Vendor.Api
+      target: base
+      
+    container_name: Vendor.Api
+      
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "https://+:5071;http://+:5070"
+      ASPNETCORE_HTTPS_PORT: 5071
+      NUGET_FALLBACK_PACKAGES: "/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2"
+      NUGET_PACKAGES: "/root/.nuget/fallbackpackages2"
+      DOTNET_USE_POLLING_FILE_WATCHER: 1
+
+    ports:
+    - "5070:5070"
+    - "5071:5071"
+
+    entrypoint: tail -f /dev/null
+    
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages  "bin/Debug/netcoreapp2.2/Vendor.Api.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidofdotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+      
+    tty: true
+    
+    volumes:
+    - ./Vendor.Api:/src:rw
+    - ./Vendor.Api/Vendor.Api:/app:rw
+    - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+    - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    - ${ProgramFiles}/dotnet/sdk/NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - ${UserProfile}/vsdbg/vs2017u5:/remote_debugger:rw
+    - ${UserProfile}/.nuget/packages:/root/.nuget/packages:ro

@@ -41,8 +41,21 @@ namespace WebApp.Api
                 app.UseHsts();
             }
 
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    "DefaultApi", 
+                    "api/{controller}/{action}");
+                routes.MapSpaFallbackRoute(
+                    "spa-fallback", 
+                    new
+                    {
+                        controller = "Home",
+                        action = "Index"
+                    });
+            });
         }
     }
 }

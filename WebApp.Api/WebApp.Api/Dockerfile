@@ -10,6 +10,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
 COPY ["WebApp.Api/WebApp.Api.csproj", "WebApp.Api/"]
 COPY ["WebApp.App/WebApp.App.csproj", "WebApp.App/"]
+COPY ["WebApp.App/WebApp.Infrastructure.csproj", "WebApp.Infrastructure/"]
 RUN dotnet restore "WebApp.Api/WebApp.Api.csproj"
 COPY . .
 WORKDIR "/src/WebApp.Api"

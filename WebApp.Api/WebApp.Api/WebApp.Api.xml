@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApp.Api</name>
+    </assembly>
+    <members>
+        <member name="M:WebApp.Api.Controllers.DefaultController.Get">
+             <summary>
+             Gets API properties
+             </summary>
+             <returns>
+             Key value dictionary with API properties
+             </returns>
+             <remarks>
+             Sample request:
+            
+               GET /api
+             </remarks>
+             <response code="200">Ok</response>
+        </member>
+    </members>
+</doc>

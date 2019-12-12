@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       username:'',
       password:''
     };
@@ -32,7 +32,7 @@ class Login extends Component {
                  onChange = {(event,newValue) => this.setState({password:newValue})}
                />
                <br/>
-               <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+               <Button label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
            </div>
            </MuiThemeProvider>
         </div>

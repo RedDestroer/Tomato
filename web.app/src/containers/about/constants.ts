@@ -1,0 +1,2 @@
+export const ABOUT_FAILURE = 'ABOUT_FAILURE';
+export const ABOUT_SUCCESS = 'ABOUT_SUCCESS';

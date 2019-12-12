@@ -1,0 +1,10 @@
+{
+  "newComponent": {
+    "prefix": "newComponent",
+    "body": [
+      "import React from 'react';",
+      "//smthg"
+    ],
+    "description": "Create new React component"
+  }
+}

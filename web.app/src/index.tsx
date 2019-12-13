@@ -1,24 +1,26 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-import NavBar from './components/navBar/NavBar'
+import NavBar from './components/navBar/NavBar';
 import theme from './theme';
 import './index.css';
 import App from './containers/app/App';
-import { AboutConnected as About } from './containers/about/About';
+import { AboutConnected as About} from './containers/about/About';
 import * as serviceWorker from './utils/serviceWorker';
-import configureStore from './store/configureStore'
+import store from './store/store';
+//import configureStore from './store/configureStore';
 import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom";
+} from 'react-router-dom';
 
-const store = configureStore();
+//const store = configureStore();
 
 render(
+  (
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -30,12 +32,13 @@ render(
             <App />
           </Route>
           <Route path="/about">
-            <About />
+            <About data={null} />
           </Route>
         </Switch>
       </Router>
     </ThemeProvider>
-  </Provider>,
+  </Provider>
+  ),
   document.getElementById('root')
 );
 

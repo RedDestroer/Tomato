@@ -1,8 +1,8 @@
-import { TomatoServiceInterface } from './TomatoServiceInterface';
+import ITomatoService from './ITomatoService';
 import { TomatoApi } from '../apis/TomatoApi';
 
-class TomatoService implements TomatoServiceInterface {
-  private static _instance: TomatoService
+class TomatoService implements ITomatoService {
+  private static _instance: TomatoService;
   private _api: TomatoApi;
 
   private constructor(api: TomatoApi) {
@@ -11,7 +11,7 @@ class TomatoService implements TomatoServiceInterface {
 
   static getInstance(): TomatoService {
     if (!TomatoService._instance) {
-      let api = TomatoApi.create('https://localhost:5051/api');
+      const api = TomatoApi.create('https://localhost:5051/api');
 
       TomatoService._instance = new TomatoService(api);
     }

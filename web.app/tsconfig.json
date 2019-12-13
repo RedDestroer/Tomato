@@ -20,6 +20,11 @@
     "jsx": "react"
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "typings"
+  ],
+  "exclude": [
+    "src/**/*.spec.*"
+  ],
+  "extends": "./node_modules/react-redux-typescript-scripts/tsconfig.json",
 }

@@ -15,3 +15,9 @@ export function getApiProperies() {
       });
     };
 }
+
+export function clearApiProperties() {
+  return (dispatch: Dispatch<ActionTypes>) => {
+    dispatch(actionCreators.aboutApiPropertiesClear())
+  }
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 //import injectTapEventPlugin from 'react-tap-event-plugin';
-import LoginScreen from '../loginScreen/LoginScreen';
+//import LoginScreen from '../loginScreen/LoginScreen';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -11,12 +11,9 @@ import Link from '@material-ui/core/Link';
 // http://stackoverflow.com/a/34015469/988941
 //injectTapEventPlugin();
 
-interface AppState {
-  loginPage: Array<React.ReactElement>,
-  uploadScreen: Array<React.ReactElement>
-};
+interface AppState {}
 
-interface AppProps {};
+interface AppProps {}
 
 function Copyright() {
   return (
@@ -32,17 +29,14 @@ function Copyright() {
 }
 
 class App extends Component<AppProps, AppState> {
-  state = {
-    loginPage:[],
-    uploadScreen:[]
-  }
-  
+  state = {};
+
   componentWillMount() {
-    var loginPage: Array<React.ReactElement> = [];
-    loginPage.push(<LoginScreen parentContext={this}/>);
-    this.setState({
-      loginPage:loginPage
-    })
+    // // var loginPage: Array<React.ReactElement> = [];
+    // // loginPage.push(<LoginScreen parentContext={this}/>);
+    // // this.setState({
+    // //   loginPage:loginPage
+    // // })
   }
 
   render() {

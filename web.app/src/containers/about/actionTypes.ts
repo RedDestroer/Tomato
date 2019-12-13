@@ -1,4 +1,4 @@
-import * as actions from './actionCreators'
+import * as actions from './actionCreators';
 
 type InferValueTypes<T> = T extends { [key: string]: infer U }
   ? U

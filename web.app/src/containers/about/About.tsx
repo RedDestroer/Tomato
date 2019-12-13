@@ -1,61 +1,68 @@
 import React, { Component } from 'react';
-import { bindActionCreators, Dispatch, ActionCreatorsMapObject } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import PropertyTable from '../../components/PropertyTable';
+import { Property } from './../../dom/Property';
 import * as actions from './actions';
-import { PropertyInfo } from '../../components/PropertyInfo';
-import { StateType } from './reducer';
-import ActionTypes from './actionTypes';
+// import { PropertyInfo } from '../../components/PropertyInfo';
+// import { StateType } from './reducer';
+// import ActionTypes from './actionTypes';
+import Types from 'AppTypes';
 
-interface State {};
+interface State {
+  isFetching: boolean;
+  properties: Property[];
+};
 
 interface Props {
-  data: object | null,
-  onShow: Function
+  data: object | null
 };
 
 class About extends Component<Props, State> {
-  state = {};
+  state = {
+    isFetching: false,
+    properties: []
+  };
 
   componentWillReceiveProps(nextProps: Props) {
-    console.log()
+    
   }
 
   async componentDidMount() {
-    const { onShow } = this.props;
-
-    onShow();
+    actions.clearApiProperties();
+    actions.getApiProperies();
   }
   
   render() {
-    const { data } = this.props;
-
     console.log(this.props);
-    console.log(data);
     console.log(this.state);
 
-      return (
-        <Container maxWidth="sm">
-          <Box my={4}>
-            <Typography variant="h4" component="h1" gutterBottom>
-              API properties
-            </Typography>
-          </Box>
-        </Container>
-      );
+    return (
+      <Container maxWidth="sm">
+        <Box my={4}>
+          <Typography variant="h4" component="h1" gutterBottom>
+            API properties
+          </Typography>
+          <p>{this.state.isFetching ? 'Fetching properties...' : <PropertyTable properties={this.state.properties} />}
+          </p>
+        </Box>
+      </Container>
+    );
   }
 }
 
-const mapStateToProps = (state: StateType, ownProps: Props) => ({
-  data: state.data
+const mapStateToProps = (state: Types.RootState, ownProps: Props) => ({
+  data: state.about.data
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators({
-    onShow: actions.getApiProperies,
+    getApiProperies: actions.getApiProperies,
   }, dispatch);
 
 export const AboutConnected = connect(mapStateToProps, mapDispatchToProps)(About);
+
 export default About;

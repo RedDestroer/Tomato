@@ -1,4 +1,4 @@
-import { ABOUT_SUCCESS, ABOUT_FAILURE } from './constants';
+import { ABOUT_SUCCESS, ABOUT_FAILURE, ABOUT_API_PROPERTIES_CLEAR } from './constants';
 import ActionTypes from './actionTypes';
 
 export type StateType = { data: object | null, error: Error | null };
@@ -15,6 +15,9 @@ export default function login(state = initialState, action: ActionTypes) {
 
     case ABOUT_FAILURE:
       return {...state, data: null, error: action.payload };
+
+    case ABOUT_API_PROPERTIES_CLEAR:
+      return {...state, data: null, error: null };
 
     default:
       return state;

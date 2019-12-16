@@ -1,8 +1,8 @@
-import configureStore from './configureStore';
+//import configureStore from './configureStore';
 
-const initialState = {};
+export const initialState = {};
 
-const store = configureStore(initialState);
+//const store = configureStore(initialState);
 
 // store as singleton
-export default store;
+//export default store;

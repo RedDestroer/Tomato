@@ -5,7 +5,7 @@ import about from '../containers/about/reducer';
 // tslint:disable-next-line: typedef
 const rootReducer = () => combineReducers({
   login,
-  about
+  about,
 });
 
 export default rootReducer;

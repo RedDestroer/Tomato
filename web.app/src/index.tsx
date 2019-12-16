@@ -9,15 +9,15 @@ import './index.css';
 import App from './containers/app/App';
 import { AboutConnected as About} from './containers/about/About';
 import * as serviceWorker from './utils/serviceWorker';
-import store from './store/store';
-//import configureStore from './store/configureStore';
+//import store from './store/store';
+import configureStore from './store/configureStore';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
 
-//const store = configureStore();
+const store = configureStore({});
 
 render(
   (
@@ -32,7 +32,7 @@ render(
             <App />
           </Route>
           <Route path="/about">
-            <About data={null} />
+            <About data={null}/>
           </Route>
         </Switch>
       </Router>

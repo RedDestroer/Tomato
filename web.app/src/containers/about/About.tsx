@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import PropTypes from 'prop-types';
 import PropertyTable from '../../components/PropertyTable';
 import { Property } from './../../dom/Property';
 import * as actions from './actions';
@@ -26,6 +27,10 @@ class About extends Component<Props, State> {
     isFetching: false,
     properties: []
   };
+
+  static propTypes = {
+    data: PropTypes.object
+  }
 
   componentWillReceiveProps(nextProps: Props) {
     
@@ -55,7 +60,7 @@ class About extends Component<Props, State> {
 }
 
 const mapStateToProps = (state: Types.RootState, ownProps: Props) => ({
-  data: state.about.data
+  data: state
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

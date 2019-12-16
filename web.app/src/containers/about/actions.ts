@@ -1,23 +1,30 @@
-import { Dispatch } from 'react';
-import { getTomatoService } from '../../services/TomatoService'
-import * as actionCreators from './actionCreators';
-import ActionTypes from './actionTypes';
+import {
+  ABOUT_SUCCESS,
+  ABOUT_FAILURE,
+  ABOUT_API_PROPERTIES_CLEAR,
+  ABOUT_API_PROPERTIES_IS_FETCHING
+} from './constants';
+import { action } from 'typesafe-actions';
 
-export function getApiProperies() {
-  return (dispatch: Dispatch<ActionTypes>) => {
-    var tomatoService = getTomatoService();
+export const aboutSuccess = (data: object) => action(ABOUT_SUCCESS, data);
+export const aboutFailure = (err: Error) => action(ABOUT_FAILURE, err);
+export const aboutApiPropertiesClear = () => action(ABOUT_API_PROPERTIES_CLEAR);
+export const aboutApiPropertiesFetchingTrue = () => action(ABOUT_API_PROPERTIES_IS_FETCHING, true);
+export const aboutApiPropertiesFetchingFalse = () => action(ABOUT_API_PROPERTIES_IS_FETCHING, false);
 
-    tomatoService.getApiProperties()
-      .then((data) => {
-        dispatch(actionCreators.aboutSuccess(data));
-      }).catch((err) => {
-        dispatch(actionCreators.aboutFailure(err));
-      });
-    };
-}
+// import { inferLiteralFromString } from '../../utils/utils';
 
-export function clearApiProperties() {
-  return (dispatch: Dispatch<ActionTypes>) => {
-    dispatch(actionCreators.aboutApiPropertiesClear())
-  }
-}
+// export const aboutSuccess = (data: object) => ({
+//   type: inferLiteralFromString(ABOUT_SUCCESS),
+//   payload: data,
+// } as const);
+
+// export const aboutFailure = (err: Error) => ({
+//   type: inferLiteralFromString(ABOUT_FAILURE),
+//   payload: err,
+// } as const);
+
+// export const aboutApiPropertiesClear = () => ({
+//   type: inferLiteralFromString(ABOUT_API_PROPERTIES_CLEAR),
+//   payload: undefined,
+// } as const);

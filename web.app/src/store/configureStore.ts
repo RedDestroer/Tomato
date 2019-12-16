@@ -1,12 +1,19 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from '../reducers/rootReducer';
+// @ts-ignore
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './rootReducer';
 import thunk from 'redux-thunk';
+import { composeEnhancers } from '../utils/utils';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// configure middlewares
+const middlewares = [thunk];
+// compose enhancers
+const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
-export default function configureStore(initialState: any) {
-  const enhancers = composeEnhancers(applyMiddleware(thunk));
-  const store = createStore(rootReducer, initialState, enhancers);
+// rehydrate state on app start
+const initialState = {};
 
-  return store;
-}
+// create store
+const store = createStore(rootReducer(), initialState, enhancer);
+
+// export store singleton instance
+export default store;

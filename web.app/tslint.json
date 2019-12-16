@@ -7,6 +7,8 @@
     "no-submodule-imports": [true,
       "rxjs",
       "@material-ui/core"
-    ]
+    ],
+    "no-unused-variable": true,
+    "jsx-boolean-value": false
   }
 }

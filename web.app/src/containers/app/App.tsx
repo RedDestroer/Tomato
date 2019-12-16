@@ -31,14 +31,6 @@ function Copyright() {
 class App extends Component<AppProps, AppState> {
   state = {};
 
-  componentWillMount() {
-    // // var loginPage: Array<React.ReactElement> = [];
-    // // loginPage.push(<LoginScreen parentContext={this}/>);
-    // // this.setState({
-    // //   loginPage:loginPage
-    // // })
-  }
-
   render() {
     return (
       <div className="App">

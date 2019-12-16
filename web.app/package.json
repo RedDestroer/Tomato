@@ -42,7 +42,8 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "rxjs": "^6.5.3",
-    "typesafe-actions": "^5.1.0"
+    "typesafe-actions": "^5.1.0",
+    "utility-types": "^3.10.0"
   },
   "devDependencies": {
     "@material-ui/core": "^4.7.2",

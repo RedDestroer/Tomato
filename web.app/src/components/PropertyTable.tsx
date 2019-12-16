@@ -23,7 +23,7 @@ type Props = {
 };
 
 const PropertyTable: React.FC<Props> = props => {
-  const classes = useStyles({});
+  const classes = useStyles();
   const { properties } = props;
 
   return (
@@ -42,7 +42,7 @@ const PropertyTable: React.FC<Props> = props => {
                 <TableCell component="th" scope="row">
                   {property.Name}
                 </TableCell>
-                <TableCell align="right">{property.Value}</TableCell>
+                <TableCell>{property.Value}</TableCell>
               </TableRow>
             ))}
           </TableBody>

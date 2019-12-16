@@ -9,7 +9,7 @@
       ["_", "isNull"],
       ["_", "isDefined"]
     ],
-    "class-name": true,
+    "class-name": 1,
     "comment-format": [true,
         "check-space",
         "check-lowercase"

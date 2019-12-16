@@ -18,7 +18,7 @@ const initialState: StateType = {
   error: null,
 };
 
-export default function login(state: StateType = initialState, action: ActionTypes) {
+export default function about(state: StateType = initialState, action: ActionTypes) {
   switch (action.type) {
     case ABOUT_SUCCESS:
       return {...state, data: action.payload, error: null };

@@ -63,7 +63,7 @@ const getProperties = (data: object | null): Property[] | null => {
     keys.forEach(key => {
       if (Object.prototype.hasOwnProperty.call(data, key)) {
         // @ts-ignore
-        const property: any = data[key];
+        const property: string = data[key];
         result.push(new Property(key, property));
       }
     });

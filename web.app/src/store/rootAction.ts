@@ -1,7 +1,7 @@
-//import * as loginActions from '../containers/login/loginActions';
+import * as loginActions from '../containers/login/actions';
 import * as aboutActions from '../containers/about/actions';
 
 export default {
-  //login: loginActions,
+  login: loginActions,
   about: aboutActions,
 };

@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
+using WebApp.Api.Attributes;
 
 namespace WebApp.Api
 {
@@ -39,6 +40,8 @@ namespace WebApp.Api
                         Title = "WebApp.Api",
                         Version = "v1"
                     });
+
+                context.OperationFilter<AddRequiredHeaderParameter>();
 
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";

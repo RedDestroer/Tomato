@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "./node_modules/react-redux-typescript-scripts/tslint.json",
+    "./node_modules/react-redux-typescript-scripts/tslint-react.json"
+  ],
+  "rules": {
+    "no-submodule-imports": [true,
+      "rxjs",
+      "@material-ui/core"
+    ],
+    "no-unused-variable": true,
+    "jsx-boolean-value": false
+  }
+}

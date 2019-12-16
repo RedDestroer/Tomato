@@ -17,6 +17,7 @@
                GET /api
              </remarks>
              <response code="200">Ok</response>
+             <response code="400">If X-WebApp-Token not set or invalid</response>
         </member>
     </members>
 </doc>

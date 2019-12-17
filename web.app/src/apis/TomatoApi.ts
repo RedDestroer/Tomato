@@ -1,17 +1,16 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 export class TomatoApi {
+  private _axiosApi: AxiosInstance;
 
-  private _axios: AxiosInstance;
-
-  constructor(axios: AxiosInstance) {
-    this._axios = axios;
+  constructor(axiosApi: AxiosInstance) {
+    this._axiosApi = axiosApi;
   }
 
   static create(baseUrl: string): TomatoApi {
     const config: AxiosRequestConfig = {
       baseURL: baseUrl,
-      responseType: 'json'
+      responseType: 'json',
     };
     const axiosInstance: AxiosInstance = axios.create(config);
 
@@ -19,6 +18,6 @@ export class TomatoApi {
   }
 
   async getProperties(): Promise<object> {
-    return this._axios.get('/').then(r => r.data);
+    return this._axiosApi.get('/').then(r => r.data);
   }
 }

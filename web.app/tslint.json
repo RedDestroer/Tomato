@@ -1,14 +1,24 @@
 {
+  "defaultSeverity": "error",
   "extends": [
+    "tslint:recommended",
+    "tslint-config-standard",
+    "tslint-react",
+    "tslint-config-prettier",
     "./node_modules/react-redux-typescript-scripts/tslint.json",
     "./node_modules/react-redux-typescript-scripts/tslint-react.json"
   ],
+  "jsRules": {},
   "rules": {
-    "no-submodule-imports": [true,
-      "rxjs",
-      "@material-ui/core"
-    ],
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "member-ordering": false,
+    "jsx-no-lambda": false,
+    "jsx-boolean-value": false,
+    "jsx-wrap-multiline": false,
     "no-unused-variable": true,
-    "jsx-boolean-value": false
-  }
+    "no-submodule-imports": [true, "rxjs", "@material-ui/core", "@material-ui/icons"],
+    "max-line-length": [true, 140]
+  },
+  "rulesDirectory": []
 }

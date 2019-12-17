@@ -10,19 +10,14 @@ import App from './containers/app/App';
 import { AboutConnected as About } from './containers/about/About';
 import * as serviceWorker from './utils/serviceWorker';
 import store from './store/configureStore';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 render(
-  (
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
-      <NavBar/>
+      <NavBar />
       <Router>
         <Switch>
           <Route exact path="/">
@@ -34,8 +29,7 @@ render(
         </Switch>
       </Router>
     </ThemeProvider>
-  </Provider>
-  ),
+  </Provider>,
   document.getElementById('root')
 );
 

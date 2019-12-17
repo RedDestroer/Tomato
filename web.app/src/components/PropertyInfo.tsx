@@ -10,12 +10,8 @@ export const PropertyInfo: React.FC<Props> = props => {
 
   return (
     <div>
-      <span>
-        {name}
-      </span>
-      <span>
-        {value}
-      </span>
+      <span>{name}</span>
+      <span>{value}</span>
     </div>
   );
 };

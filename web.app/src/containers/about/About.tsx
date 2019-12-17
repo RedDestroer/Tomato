@@ -27,15 +27,13 @@ type Props = ReturnType<typeof mapStateToProps> &
     data: object | null;
   };
 
-type State = {
-};
+type State = {};
 
 export class About extends Component<Props, State> {
-
-  componentDidMount() {
+  async componentDidMount() {
     const { getApiProperies } = this.props;
 
-    getApiProperies();
+    await getApiProperies();
   }
 
   render() {
@@ -48,8 +46,7 @@ export class About extends Component<Props, State> {
           <Typography variant="h4" component="h1" gutterBottom>
             API properties
           </Typography>
-          <div>{isFetching ? 'Fetching properties...' : <PropertyTable properties={properties} />}
-          </div>
+          <div>{isFetching ? 'Fetching properties...' : <PropertyTable properties={properties} />}</div>
         </Box>
       </Container>
     );

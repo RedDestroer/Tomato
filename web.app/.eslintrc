@@ -1,19 +1,22 @@
 {
   "extends": [
     "react-app",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react",
+    "prettier/standard",
+    "prettier/babel",
     "./node_modules/react-redux-typescript-scripts/eslint.js"
   ],
+  "env": {
+    "es6": true,
+    "node": true
+  },
   "rules": {
-    "ban": [1,
-      ["_", "extend"],
-      ["_", "isNull"],
-      ["_", "isDefined"]
-    ],
+    "prettier/prettier": "error",
+    "ban": [1, ["_", "extend"], ["_", "isNull"], ["_", "isDefined"]],
     "class-name": 1,
-    "comment-format": [true,
-        "check-space",
-        "check-lowercase"
-    ],
+    "comment-format": [1, "check-space", "check-lowercase"],
     "curly": 1,
     "eofline": false,
     "forin": true,
@@ -25,13 +28,7 @@
     "max-line-length": [true, 140],
     "no-arg": true,
     "no-bitwise": 1,
-    "no-console": [true,
-        "debug",
-        "info",
-        "time",
-        "timeEnd",
-        "trace"
-    ],
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-construct": true,
     "no-debugger": 1,
     "no-duplicate-key": true,
@@ -45,38 +42,16 @@
     "no-unused-variable": true,
     "no-unreachable": 1,
     "no-use-before-declare": true,
-    "one-line": [true,
-        "check-open-brace",
-        "check-catch",
-        "check-else",
-        "check-whitespace"
-    ],
+    "operator-linebreak": [true, "before"],
+    "one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
     "quotemark": [true, "single"],
     "radix": 1,
-    "semicolon": [ true, "always" ],
+    "semicolon": [true, "always"],
     "triple-equals": [true, "allow-null-check"],
-    "typedef": [true,
-        "call-signature",
-        "parameter",
-        "property-declaration",
-        "variable-declaration"
-    ],
-    "typedef-whitespace": [
-      true,
-      { "call-signature": "nospace" },
-      { "index-signature": "space" }
-    ],
-    "use-strict": [true,
-        "check-module",
-        "check-function"
-    ],
+    "typedef": [true, "call-signature", "parameter", "property-declaration", "variable-declaration"],
+    "typedef-whitespace": [true, { "call-signature": "nospace" }, { "index-signature": "space" }],
+    "use-strict": [true, "check-module", "check-function"],
     "variable-name": false,
-    "whitespace": [false,
-        "check-branch",
-        "check-decl",
-        "check-operator",
-        "check-separator",
-        "check-type"
-    ]
+    "whitespace": [false, "check-branch", "check-decl", "check-operator", "check-separator", "check-type"]
   }
 }

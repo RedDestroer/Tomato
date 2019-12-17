@@ -1,9 +1,4 @@
-import {
-  ABOUT_SUCCESS,
-  ABOUT_FAILURE,
-  ABOUT_API_PROPERTIES_CLEAR,
-  ABOUT_API_PROPERTIES_IS_FETCHING
-} from './constants';
+import { ABOUT_SUCCESS, ABOUT_FAILURE, ABOUT_API_PROPERTIES_CLEAR, ABOUT_API_PROPERTIES_IS_FETCHING } from './constants';
 import { action } from 'typesafe-actions';
 
 export const aboutSuccess = (data: object) => action(ABOUT_SUCCESS, data);

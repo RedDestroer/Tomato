@@ -9,16 +9,19 @@ export function getApiProperies() {
 
     const tomatoService = getTomatoService();
 
-    tomatoService.getApiProperties()
-      .then((data) => {
+    return tomatoService
+      .getApiProperties()
+      .then(data => {
         dispatch(actionCreators.aboutSuccess(data));
-      }).catch((err) => {
+      })
+      .catch(err => {
         dispatch(actionCreators.aboutApiPropertiesClear());
         dispatch(actionCreators.aboutFailure(err));
-      }).finally(() => {
+      })
+      .finally(() => {
         dispatch(actionCreators.aboutApiPropertiesFetchingFalse());
       });
-    };
+  };
 }
 
 export function clearApiProperties() {

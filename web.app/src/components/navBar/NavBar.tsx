@@ -22,9 +22,9 @@ const useStyles = makeStyles(theme => ({
 const NavBar = () => {
   const classes = useStyles();
 
-  return(
+  return (
     <div className={classes.root}>
-      <AppBar position='static'>
+      <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
@@ -32,11 +32,13 @@ const NavBar = () => {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit" href="/about">Login</Button>
+          <Button color="inherit" href="/about">
+            Login
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
-  )
-}
+  );
+};
 
 export default NavBar;

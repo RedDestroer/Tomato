@@ -20,10 +20,9 @@ class TomatoService implements ITomatoService {
   }
 
   async getApiProperties(): Promise<object> {
-    return this._api.getProperties()
-      .then(obj => {
-        return obj;
-      });
+    return this._api.getProperties().then(obj => {
+      return obj;
+    });
   }
 }
 

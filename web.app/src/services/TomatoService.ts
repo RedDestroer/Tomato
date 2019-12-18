@@ -1,5 +1,5 @@
 import ITomatoService from './ITomatoService';
-import { TomatoApi } from '../apis/TomatoApi';
+import { TomatoApi } from '../api/TomatoApi';
 
 class TomatoService implements ITomatoService {
   private static _instance: TomatoService;

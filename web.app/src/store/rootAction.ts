@@ -1,5 +1,5 @@
-import * as loginActions from '../containers/login/actions';
-import * as aboutActions from '../containers/about/actions';
+import * as loginActions from '../views/login/actions';
+import * as aboutActions from '../views/about/actions';
 
 export default {
   login: loginActions,

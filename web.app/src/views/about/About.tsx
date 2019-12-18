@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropertyTable from '../../components/PropertyTable';
-import { Property } from './../../dom/Property';
+import { Property } from './../../models/Property';
 import * as actions from './dispatchActions';
 import Types from 'AppTypes';
 

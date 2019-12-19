@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import InfoBox from '../components/InfoBox';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AboutConnected as About } from '../views/about/About';
+import { LoginConnected as Login } from '../views/login/Login';
 
 interface State {}
 
@@ -23,6 +24,9 @@ class App extends Component<Props, State> {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/login">
+              <Login />
             </Route>
           </Switch>
         </Router>

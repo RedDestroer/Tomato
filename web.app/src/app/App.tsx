@@ -5,6 +5,7 @@ import InfoBox from '../components/InfoBox';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AboutConnected as About } from '../views/about/About';
 import { LoginConnected as Login } from '../views/login/Login';
+import Signin from '../views/signin/Signin';
 
 interface State {}
 
@@ -27,6 +28,9 @@ class App extends Component<Props, State> {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/signin">
+              <Signin />
             </Route>
           </Switch>
         </Router>

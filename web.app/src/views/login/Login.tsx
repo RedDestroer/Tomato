@@ -49,8 +49,6 @@ export class Login extends Component<Props, State> {
   render() {
     return (
       <div>
-        <TextField />
-
         <TextField helperText="Enter your Name" onChange={this.handleUserNameChange} />
         <br />
         <TextField type="password" helperText="Enter your Password" defaultValue="Password" />

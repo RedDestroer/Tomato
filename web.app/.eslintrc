@@ -12,13 +12,14 @@
     "es6": true,
     "node": true
   },
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error",
     "ban": [1, ["_", "extend"], ["_", "isNull"], ["_", "isDefined"]],
     "class-name": 1,
     "comment-format": [1, "check-space", "check-lowercase"],
     "curly": 1,
-    "eofline": false,
+    "eofline": 0,
     "forin": true,
     "indent": [true, 4],
     "interface-name": true,

@@ -33,7 +33,7 @@ const NavBar = () => {
           <Typography variant="h6" className={classes.title}>
             Tomato
           </Typography>
-          <Button color="inherit" href="/about">
+          <Button color="inherit" href="/login">
             Login
           </Button>
         </Toolbar>

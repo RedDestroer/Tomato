@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
+    textAlign: 'left',
   },
 }));
 
@@ -30,7 +31,7 @@ const NavBar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            News
+            Tomato
           </Typography>
           <Button color="inherit" href="/about">
             Login

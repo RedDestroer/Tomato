@@ -1,47 +1,31 @@
 import React, { Component } from 'react';
 import './App.css';
-// import injectTapEventPlugin from 'react-tap-event-plugin';
-// import LoginScreen from '../loginScreen/LoginScreen';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Link from '@material-ui/core/Link';
+import NavBar from '../components/NavBar';
+import InfoBox from '../components/InfoBox';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { AboutConnected as About } from '../views/about/About';
 
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-// injectTapEventPlugin();
+interface State {}
 
-interface AppState {}
+interface Props {}
 
-interface AppProps {}
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="/about">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-class App extends Component<AppProps, AppState> {
+class App extends Component<Props, State> {
   state = {};
 
   render() {
     return (
       <div className="App">
-        <Container maxWidth="sm">
-          <Box my={4}>
-            <Typography variant="h4" component="h1" gutterBottom>
-              Create React App v4-beta example
-            </Typography>
-            <Copyright />
-          </Box>
-        </Container>
+        <NavBar />
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <InfoBox />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+          </Switch>
+        </Router>
       </div>
     );
   }

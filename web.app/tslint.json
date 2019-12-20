@@ -17,7 +17,7 @@
     "jsx-boolean-value": false,
     "jsx-wrap-multiline": false,
     "no-unused-variable": true,
-    "no-submodule-imports": [true, "rxjs", "@material-ui/core", "@material-ui/icons"],
+    "no-submodule-imports": [true, "rxjs", "@material-ui/core", "@material-ui/icons", "@auth0/auth0-spa-js/dist/typings"],
     "max-line-length": [true, 140]
   },
   "rulesDirectory": []

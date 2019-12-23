@@ -1,7 +1,20 @@
-import IAuth0Service, { RedirectCallbackType } from './IAuth0Service';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
 import { AUTH_CONFIG } from '../config/configuration';
+
+export type RedirectCallbackType = (result: RedirectLoginResult) => void;
+
+export interface IAuth0Service {
+  handleRedirectCallback(onRedirectCallback?: RedirectCallbackType): Promise<void>;
+  isAuthenticated(): Promise<boolean>;
+  getUser(options?: GetUserOptions): Promise<any>;
+  loginWithPopup(options?: PopupLoginOptions, config?: PopupConfigOptions): Promise<void>;
+  getIdTokenClaims(options?: getIdTokenClaimsOptions): Promise<IdToken>;
+  loginWithRedirect(options?: RedirectLoginOptions): Promise<void>;
+  getTokenSilently(options?: GetTokenSilentlyOptions): Promise<any>;
+  getTokenWithPopup(options?: GetTokenWithPopupOptions, config?: PopupConfigOptions): Promise<string>;
+  logout(options?: LogoutOptions): void;
+}
 
 export const DEFAULT_REDIRECT_CALLBACK: RedirectCallbackType = () =>
   window.history.replaceState({}, document.title, window.location.pathname);

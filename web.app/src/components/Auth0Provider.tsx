@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { getAuth0Service, DEFAULT_REDIRECT_CALLBACK } from '../services/Auth0Service';
-import IAuth0Service, { RedirectCallbackType } from '../services/IAuth0Service';
+import { getAuth0Service, IAuth0Service, RedirectCallbackType, DEFAULT_REDIRECT_CALLBACK } from '../services/Auth0Service';
+import { log } from '../services/LoggerService';
 
 type Auth0ContextProps = {
   isAuthenticated: boolean;
@@ -42,7 +42,7 @@ export const Auth0Provider: React.FC<Props> = props => {
 
       if (window.location.search.includes('code=')) {
         await auth0ServiceInst.handleRedirectCallback(onRedirectCallback).catch(error => {
-          console.log(error);
+          log(error);
         });
       }
 

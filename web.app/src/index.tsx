@@ -8,13 +8,21 @@ import './index.css';
 import App from './app/App';
 import * as serviceWorker from './utils/serviceWorker';
 import store from './store/configureStore';
+/// import { history } from './utils/history';
+import { Auth0Provider } from './components/Auth0Provider';
+
+const onRedirectCallback = (appState?: any) => {
+  // history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
+};
 
 render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
-      <App />
+      <Auth0Provider onRedirectCallback={onRedirectCallback}>
+        <App />
+      </Auth0Provider>
     </ThemeProvider>
   </Provider>,
   document.getElementById('root')

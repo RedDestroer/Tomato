@@ -1,5 +1,5 @@
 import ITomatoService from './ITomatoService';
-import { TomatoApi } from '../api/TomatoApi';
+import TomatoApi from '../api/TomatoApi';
 
 class TomatoService implements ITomatoService {
   private static _instance: TomatoService;
@@ -26,6 +26,6 @@ class TomatoService implements ITomatoService {
   }
 }
 
-export function getTomatoService() {
+export function getTomatoService(): ITomatoService {
   return TomatoService.getInstance();
 }

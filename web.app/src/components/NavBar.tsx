@@ -12,7 +12,12 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import MenuIcon from '@material-ui/icons/Menu';
-import { useAuth0 } from '../utils/react-auth0-spa';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { useAuth0 } from '../components/Auth0Provider';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,19 +42,17 @@ const NavBar: React.FC<Props> = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-  // @ts-ignore
-  let { user, isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const [dialogOpen, setDialogOpen] = useState(false);
 
-  if (isAuthenticated == null) {
-    isAuthenticated = false;
-  }
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
+  };
 
-  console.log(user);
-  console.log(isAuthenticated);
-  console.log(loginWithRedirect);
-  console.log(logout);
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
 
-  // @ts-ignore
   const logoutWithRedirect = () =>
     logout({
       returnTo: window.location.origin,
@@ -100,8 +103,8 @@ const NavBar: React.FC<Props> = () => {
             <Button
               color="inherit"
               onClick={() => {
-                console.log(loginWithRedirect);
-                loginWithRedirect({});
+                // tslint:disable-next-line: no-floating-promises
+                loginWithRedirect();
               }}
             >
               Log in
@@ -110,7 +113,7 @@ const NavBar: React.FC<Props> = () => {
           {isAuthenticated && (
             <div>
               <Button ref={anchorRef} aria-controls={open ? 'menu-list-grow' : undefined} aria-haspopup="true" onClick={handleToggle}>
-                Toggle Menu Grow
+                Login menu
               </Button>
               <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({ TransitionProps, placement }) => (
@@ -120,7 +123,7 @@ const NavBar: React.FC<Props> = () => {
                         <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                           <MenuItem onClick={handleClose}>Profile</MenuItem>
                           <MenuItem onClick={handleClose}>My account</MenuItem>
-                          <MenuItem onClick={handleClose}>Logout</MenuItem>
+                          <MenuItem onClick={handleDialogOpen}>Logout</MenuItem>
                         </MenuList>
                       </ClickAwayListener>
                     </Paper>
@@ -131,6 +134,29 @@ const NavBar: React.FC<Props> = () => {
           )}
         </Toolbar>
       </AppBar>
+      <div>
+        <Dialog
+          open={dialogOpen}
+          onClose={handleDialogClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">Are you sure you want to logout?</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              By pressing 'yes, logout' you will be logged out of application.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleDialogClose} color="primary">
+              No
+            </Button>
+            <Button onClick={() => logoutWithRedirect()} color="primary" autoFocus>
+              Yes, logout
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     </div>
   );
 };

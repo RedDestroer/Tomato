@@ -1,3 +1,7 @@
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory, History, LocationState } from 'history';
 
-export default createBrowserHistory();
+function CreateHistory(): History<LocationState> {
+  return createBrowserHistory<LocationState>();
+}
+
+export const history = CreateHistory();

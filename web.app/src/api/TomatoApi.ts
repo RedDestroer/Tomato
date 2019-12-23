@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
-export class TomatoApi {
+export default class TomatoApi {
   private _axiosApi: AxiosInstance;
 
   constructor(axiosApi: AxiosInstance) {

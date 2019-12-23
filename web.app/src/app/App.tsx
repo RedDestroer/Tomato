@@ -1,47 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import NavBar from '../components/NavBar';
 import InfoBox from '../components/InfoBox';
 import Profile from '../views/profile/Profile';
 import PrivateRoute from '../components/PrivateRoute';
+import NotFound from '../components/NotFound';
 import { Router, Switch, Route } from 'react-router-dom';
 import { AboutConnected as About } from '../views/about/About';
-import { LoginConnected as Login } from '../views/login/Login';
-import Signin from '../views/signin/Signin';
 import { Container } from '@material-ui/core';
-import history from '../utils/history';
-
-interface State {}
+import { history } from '../utils/history';
 
 interface Props {}
 
-class App extends Component<Props, State> {
-  state = {};
-
-  render() {
-    return (
-      <div className="App">
-        <Router history={history}>
-          <NavBar />
-          <Container>
-            <Switch>
-              <Route exact path="/" component={InfoBox} />
-              <PrivateRoute path="/profile" component={Profile} />
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route path="/signin">
-                <Signin />
-              </Route>
-            </Switch>
-          </Container>
-        </Router>
-      </div>
-    );
-  }
-}
+const App: React.FC<Props> = props => {
+  return (
+    <div className="App">
+      <Router history={history}>
+        <NavBar />
+        <Container>
+          <Switch>
+            <Route exact path="/" component={InfoBox} />
+            <PrivateRoute path="/profile" component={Profile} />
+            <Route path="/about" component={About} />
+            <Route component={NotFound} />
+          </Switch>
+        </Container>
+      </Router>
+    </div>
+  );
+};
 
 export default App;

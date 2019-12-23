@@ -8,12 +8,11 @@ import './index.css';
 import App from './app/App';
 import * as serviceWorker from './utils/serviceWorker';
 import store from './store/configureStore';
-import history from './utils/history';
-import { Auth0Provider } from './utils/react-auth0-spa';
-import { AUTH_CONFIG } from './config/configuration';
+/// import { history } from './utils/history';
+import { Auth0Provider } from './components/Auth0Provider';
 
 const onRedirectCallback = (appState?: any) => {
-  history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
+  // history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
 };
 
 render(
@@ -21,12 +20,7 @@ render(
     <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
-      <Auth0Provider
-        domain={AUTH_CONFIG.domain}
-        client_id={AUTH_CONFIG.clientId}
-        redirect_uri={window.location.origin}
-        onRedirectCallback={onRedirectCallback}
-      >
+      <Auth0Provider onRedirectCallback={onRedirectCallback}>
         <App />
       </Auth0Provider>
     </ThemeProvider>

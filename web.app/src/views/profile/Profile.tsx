@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Loading from '../../components/Loading';
-import { useAuth0 } from '../../components/Auth0Provider';
+import { useAuth0 } from '../../lib/auth0';
 import { Container } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -12,9 +12,11 @@ interface Props {}
 
 const Profile: React.FC<Props> = props => {
   const classes = useStyles();
-  const { loading, user } = useAuth0();
+  const { isInitializing, user } = useAuth0();
 
-  if (loading || !user) {
+  console.log(`profile: ${user}`);
+
+  if (isInitializing || !user) {
     return <Loading />;
   }
 

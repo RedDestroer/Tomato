@@ -20,14 +20,14 @@ export const DEFAULT_REDIRECT_CALLBACK: RedirectCallbackType = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 
 class Auth0Service implements IAuth0Service {
-  private static _instance: Auth0Service;
+  private static _instance: IAuth0Service;
   private _api: Auth0Client;
 
   private constructor(api: Auth0Client) {
     this._api = api;
   }
 
-  static async getInstance(): Promise<Auth0Service> {
+  static async getInstance(): Promise<IAuth0Service> {
     if (!Auth0Service._instance) {
       const config: Auth0ClientOptions = {
         domain: AUTH_CONFIG.domain,
@@ -37,7 +37,13 @@ class Auth0Service implements IAuth0Service {
 
       const api: Auth0Client = await createAuth0Client(config);
 
+      console.log(Auth0Service._instance);
+      console.log('new');
       Auth0Service._instance = new Auth0Service(api);
+      console.log(Auth0Service._instance);
+    } else {
+      console.log(Auth0Service._instance);
+      console.log('old');
     }
 
     return Auth0Service._instance;

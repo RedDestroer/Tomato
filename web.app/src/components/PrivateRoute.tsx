@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, withRouter, RouteComponentProps } from 'react-router-dom';
-import { useAuth0 } from './Auth0Provider';
+import { useAuth0 } from '../lib/auth0';
 
 interface ExtendedProps extends RouteComponentProps {
   component: React.ReactNode | ((...args: any[]) => any) | any;
@@ -15,12 +15,13 @@ const PrivateRoute: React.FC<Props> = props => {
 
   useEffect(() => {
     const fn = async () => {
-      if (!isAuthenticated) {
-        const options: RedirectLoginOptions = {
-          appState: { targetUrl: location.pathname },
-        };
-        await loginWithRedirect(options);
-      }
+      console.log(`private route: ${isAuthenticated}`);
+      // if (!isAuthenticated) {
+      //   const options: RedirectLoginOptions = {
+      //     appState: { targetUrl: location.pathname },
+      //   };
+      //   await loginWithRedirect(options);
+      // }
     };
     // tslint:disable-next-line: no-floating-promises
     fn();

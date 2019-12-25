@@ -17,8 +17,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+//import { NavLink as RouterNavLink } from 'react-router-dom';
 import { useAuth0 } from '../lib/auth0';
-// import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,9 +45,6 @@ const NavBar: React.FC<Props> = () => {
   const anchorRef = useRef(null);
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const [dialogOpen, setDialogOpen] = useState(false);
-  // const [redirect, setRedirect] = useState(false);
-
-  console.log(`nav bar: ${isAuthenticated}`);
 
   const handleDialogOpen = () => {
     setDialogOpen(true);
@@ -82,11 +79,6 @@ const NavBar: React.FC<Props> = () => {
     }
   };
 
-  // const handleProfileRedirect = (event: any) => {
-  //   handleClose(event);
-  //   setRedirect(true);
-  // };
-
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = useRef(open);
   useEffect(() => {
@@ -96,7 +88,7 @@ const NavBar: React.FC<Props> = () => {
     }
 
     prevOpen.current = open;
-  }, [open]);
+  });
 
   // const { from } = { from: { pathname: '/profile' } };
   // if (redirect) {
@@ -117,8 +109,9 @@ const NavBar: React.FC<Props> = () => {
             <Button
               color="inherit"
               onClick={() => {
-                // tslint:disable-next-line: no-floating-promises
-                loginWithRedirect();
+                if (loginWithRedirect !== undefined) {
+                  loginWithRedirect();
+                }
               }}
             >
               Log in

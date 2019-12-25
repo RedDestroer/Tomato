@@ -15,13 +15,12 @@ const PrivateRoute: React.FC<Props> = props => {
 
   useEffect(() => {
     const fn = async () => {
-      console.log(`private route: ${isAuthenticated}`);
-      // if (!isAuthenticated) {
-      //   const options: RedirectLoginOptions = {
-      //     appState: { targetUrl: location.pathname },
-      //   };
-      //   await loginWithRedirect(options);
-      // }
+      if (!isAuthenticated) {
+        const options: RedirectLoginOptions = {
+          appState: { targetUrl: location.pathname },
+        };
+        await loginWithRedirect(options);
+      }
     };
     // tslint:disable-next-line: no-floating-promises
     fn();

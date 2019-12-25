@@ -12,11 +12,9 @@ interface Props {}
 
 const Profile: React.FC<Props> = props => {
   const classes = useStyles();
-  const { isInitializing, user } = useAuth0();
+  const { user } = useAuth0();
 
-  console.log(`profile: ${user}`);
-
-  if (isInitializing || !user) {
+  if (!user) {
     return <Loading />;
   }
 

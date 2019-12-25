@@ -17,7 +17,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { useAuth0 } from '../components/Auth0Provider';
+//import { NavLink as RouterNavLink } from 'react-router-dom';
+import { useAuth0 } from '../lib/auth0';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -87,7 +88,12 @@ const NavBar: React.FC<Props> = () => {
     }
 
     prevOpen.current = open;
-  }, [open]);
+  });
+
+  // const { from } = { from: { pathname: '/profile' } };
+  // if (redirect) {
+  //   return <Redirect to={from} />;
+  // }
 
   return (
     <div className={classes.root}>
@@ -103,8 +109,9 @@ const NavBar: React.FC<Props> = () => {
             <Button
               color="inherit"
               onClick={() => {
-                // tslint:disable-next-line: no-floating-promises
-                loginWithRedirect();
+                if (loginWithRedirect !== undefined) {
+                  loginWithRedirect();
+                }
               }}
             >
               Log in

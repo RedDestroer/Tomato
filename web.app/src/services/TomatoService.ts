@@ -1,5 +1,8 @@
-import ITomatoService from './ITomatoService';
 import TomatoApi from '../api/TomatoApi';
+
+export interface ITomatoService {
+  getApiProperties(): Promise<object>;
+}
 
 class TomatoService implements ITomatoService {
   private static _instance: TomatoService;

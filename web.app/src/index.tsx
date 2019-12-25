@@ -3,28 +3,41 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-import theme from './theme';
 import './index.css';
 import App from './app/App';
 import * as serviceWorker from './utils/serviceWorker';
+import history from './utils/history';
+import { Auth0Provider } from './lib/auth0';
+import theme from './theme';
 import store from './store/configureStore';
-/// import { history } from './utils/history';
-import { Auth0Provider } from './components/Auth0Provider';
+import { log } from './services/LoggerService';
+import { AUTH_CONFIG } from './config/configuration';
 
-const onRedirectCallback = (appState?: any) => {
-  // history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
+const onRedirectCallback = (result?: RedirectLoginResult) => {
+  log(`auth0 onRedirectCallback called with result ${JSON.stringify(result)}`);
+
+  // Clears auth0 query string parameters from url
+  const targetUrl = result && result.appState && result.appState.targetUrl ? result.appState.targetUrl : window.location.pathname;
+
+  history.push(targetUrl);
 };
 
 render(
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-      <CssBaseline />
-      <Auth0Provider onRedirectCallback={onRedirectCallback}>
+  <Auth0Provider
+    domain={AUTH_CONFIG.domain}
+    client_id={AUTH_CONFIG.clientId}
+    redirect_uri={window.location.origin}
+    onRedirectCallback={onRedirectCallback}
+  >
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+
         <App />
-      </Auth0Provider>
-    </ThemeProvider>
-  </Provider>,
+      </ThemeProvider>
+    </Provider>
+  </Auth0Provider>,
   document.getElementById('root')
 );
 

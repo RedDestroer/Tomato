@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
 import * as actions from './dispatchActions';
 import Types from 'AppTypes';
+import { log } from '../../services/LoggerService';
 
 const mapStateToProps = (state: Types.RootState) => ({
   data: state.about.data,
@@ -42,8 +43,8 @@ export class Login extends Component<Props, State> {
   }
 
   handleUserNameChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    console.log(event);
-    //this.setState({username: event});
+    log(event);
+    // this.setState({username: event});
   }
 
   render() {

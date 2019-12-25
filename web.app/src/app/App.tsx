@@ -8,11 +8,19 @@ import NotFound from '../components/NotFound';
 import { Router, Switch, Route } from 'react-router-dom';
 import { AboutConnected as About } from '../views/about/About';
 import { Container } from '@material-ui/core';
-import { history } from '../utils/history';
+import history from '../utils/history';
+import Loading from '../components/Loading';
+import { useAuth0 } from '../lib/auth0';
 
 interface Props {}
 
 const App: React.FC<Props> = props => {
+  const { isInitializing } = useAuth0();
+
+  if (isInitializing) {
+    return <Loading />;
+  }
+
   return (
     <div className="App">
       <Router history={history}>

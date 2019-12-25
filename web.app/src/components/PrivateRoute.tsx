@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { Route, withRouter, RouteComponentProps } from 'react-router-dom';
-import { useAuth0 } from './Auth0Provider';
+import { useAuth0 } from '../lib/auth0';
 
 interface ExtendedProps extends RouteComponentProps {
-  component: React.ReactElement | ((...args: any[]) => any);
+  component: React.ReactNode | ((...args: any[]) => any) | any;
   path: string | string[];
 }
 
-type Props = ExtendedProps & { [prop: string]: string | React.ReactElement | ((...args: any[]) => any) };
+type Props = ExtendedProps & { [prop: string]: string | React.ReactNode | ((...args: any[]) => any) };
 
 const PrivateRoute: React.FC<Props> = props => {
   const { component, path, location, ...rest } = props;
@@ -26,7 +26,7 @@ const PrivateRoute: React.FC<Props> = props => {
     fn();
   }, [isAuthenticated, loginWithRedirect, path, location]);
 
-  const render = (componentProps: any) => (isAuthenticated === true ? <React.Component {...componentProps} /> : null);
+  const render = (componentProps: any) => (isAuthenticated === true ? React.createElement(component, componentProps) : null);
 
   return <Route path={path} render={render} {...rest} />;
 };

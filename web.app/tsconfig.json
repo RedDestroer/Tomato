@@ -23,6 +23,7 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "alwaysStrict": true,
-    "removeComments": true
+    "removeComments": true,
+    "noUnusedLocals": false
   }
 }

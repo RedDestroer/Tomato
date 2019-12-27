@@ -17,11 +17,16 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-//import { NavLink as RouterNavLink } from 'react-router-dom';
+import { NavLink as RouterNavLink, NavLink } from 'react-router-dom';
 import { useAuth0 } from '../lib/auth0';
+import Link from '@material-ui/core/Link';
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
     flexGrow: 1,
     display: 'flex',
   },
@@ -35,6 +40,10 @@ const useStyles = makeStyles(theme => ({
   paper: {
     marginRight: theme.spacing(2),
   },
+  medium: {
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+  },
 }));
 
 interface Props {}
@@ -43,7 +52,7 @@ const NavBar: React.FC<Props> = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleDialogOpen = () => {
@@ -58,10 +67,6 @@ const NavBar: React.FC<Props> = () => {
     logout({
       returnTo: window.location.origin,
     });
-
-  const handleToggle = () => {
-    setOpen(prevOpen => !prevOpen);
-  };
 
   const handleClose = (event: any) => {
     // @ts-ignore
@@ -79,8 +84,12 @@ const NavBar: React.FC<Props> = () => {
     }
   };
 
+  const handleToggle = () => {
+    setOpen(isOpen => !isOpen);
+  };
+
   // return focus to the button when we transitioned from !open -> open
-  const prevOpen = useRef(open);
+  const prevOpen = useRef<boolean>(open);
   useEffect(() => {
     if (prevOpen.current === true && open === false) {
       // @ts-ignore
@@ -90,11 +99,6 @@ const NavBar: React.FC<Props> = () => {
     prevOpen.current = open;
   });
 
-  // const { from } = { from: { pathname: '/profile' } };
-  // if (redirect) {
-  //   return <Redirect to={from} />;
-  // }
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -103,7 +107,9 @@ const NavBar: React.FC<Props> = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Tomato
+            <Button color="inherit" component={NavLink} to="/">
+              Tomato
+            </Button>
           </Typography>
           {!isAuthenticated && (
             <Button
@@ -119,17 +125,28 @@ const NavBar: React.FC<Props> = () => {
           )}
           {isAuthenticated && (
             <div>
-              <Button ref={anchorRef} aria-controls={open ? 'menu-list-grow' : undefined} aria-haspopup="true" onClick={handleToggle}>
-                Login menu
-              </Button>
+              <IconButton
+                edge="end"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="menu"
+                ref={anchorRef}
+                aria-controls={open ? 'menu-list-grow' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
+              >
+                <Avatar alt={user.nickname} src={user.picture} className={classes.medium} />
+              </IconButton>
+
               <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({ TransitionProps, placement }) => (
                   <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}>
                     <Paper>
                       <ClickAwayListener onClickAway={handleClose}>
                         <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                          <MenuItem onClick={handleClose}>Profile</MenuItem>
-                          <MenuItem onClick={handleClose}>My account</MenuItem>
+                          <MenuItem onClick={handleClose} component={NavLink} to="/profile">
+                            Profile
+                          </MenuItem>
                           <MenuItem onClick={handleDialogOpen}>Logout</MenuItem>
                         </MenuList>
                       </ClickAwayListener>

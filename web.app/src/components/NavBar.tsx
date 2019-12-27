@@ -19,7 +19,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { NavLink as RouterNavLink, NavLink } from 'react-router-dom';
 import { useAuth0 } from '../lib/auth0';
-import Link from '@material-ui/core/Link';
 import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles(theme => ({

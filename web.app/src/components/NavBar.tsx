@@ -17,7 +17,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { NavLink as RouterNavLink, NavLink } from 'react-router-dom';
+import { NavLink as RouterNavLink } from 'react-router-dom';
 import { useAuth0 } from '../lib/auth0';
 import Avatar from '@material-ui/core/Avatar';
 
@@ -106,7 +106,7 @@ const NavBar: React.FC<Props> = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <Button color="inherit" component={NavLink} to="/">
+            <Button color="inherit" component={RouterNavLink} to="/">
               Tomato
             </Button>
           </Typography>
@@ -143,7 +143,7 @@ const NavBar: React.FC<Props> = () => {
                     <Paper>
                       <ClickAwayListener onClickAway={handleClose}>
                         <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                          <MenuItem onClick={handleClose} component={NavLink} to="/profile">
+                          <MenuItem onClick={handleClose} component={RouterNavLink} to="/profile">
                             Profile
                           </MenuItem>
                           <MenuItem onClick={handleDialogOpen}>Logout</MenuItem>

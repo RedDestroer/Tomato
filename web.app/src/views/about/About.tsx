@@ -5,7 +5,8 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PropertyTable from '../../components/PropertyTable';
-import { Property } from './../../models/Property';
+import AppPropertyTable from '../../components/AppPropertyTable';
+import { Property } from '../../models/Property';
 import * as actions from './dispatchActions';
 import Types from 'AppTypes';
 
@@ -42,6 +43,9 @@ export class About extends Component<Props, State> {
 
     return (
       <Container>
+        <Box my={4}>
+          <AppPropertyTable />
+        </Box>
         <Box my={4}>
           <Typography variant="h4" component="h1" gutterBottom>
             API properties

@@ -1,19 +1,12 @@
-version: "3.7"
+version: '3.4'
+
 services:
   webapp.api:
-    image: webappapi:dev
+    image: ${DOCKER_REGISTRY-}webappapi:${TAG}
+    container_name: WebApp.Api
     
     build:
-      dockerfile: ./WebApp.Api/Dockerfile
       context: ./WebApp.Api
-
-    environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
-      ASPNETCORE_URLS: "https://+:443;http://+:80"
-      ASPNETCORE_HTTPS_PORT: 5051
-
-    ports:
-    - "5050:80"
-    - "5051:443"
-
-    entrypoint: tail webappapi:dev -f /dev/null
+      dockerfile: WebApp.Api/Dockerfile
+      labels:
+        - "com.microsoft.visual-studio.project-name=WebApp.Api"

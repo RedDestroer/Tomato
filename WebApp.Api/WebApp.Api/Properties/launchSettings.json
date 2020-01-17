@@ -23,9 +23,9 @@
             "launchBrowser": true,
             "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/values",
             "publishAllPorts": true,
-            "httpPort": 5050, 
+            "httpPort": 5050,
             "useSSL": true,
-            "sslPort": 5051 
+            "sslPort": 5051
         }
     }
 }

@@ -15,3 +15,6 @@ docker run --rm -it --entrypoint=/bin/bash webappapi:dev
 docker exec -it name-of-container bash
 
 docker run -dt webappapi:dev -p 5050:80 -p 5051:443 -P --name WebApp.Api --entrypoint tail -f /dev/null
+
+# Запуск контейнера индивидуально
+docker run -d=false -p 5050:80 --name webappapi webappapi:dev

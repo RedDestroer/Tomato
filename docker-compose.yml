@@ -7,6 +7,30 @@ services:
     
     build:
       context: ./WebApp.Api
-      dockerfile: WebApp.Api/Dockerfile
+      dockerfile: Dockerfile
       labels:
         - "com.microsoft.visual-studio.project-name=WebApp.Api"
+        
+    depends_on:
+      - auth0.api
+      - vendor.api
+  
+  auth0.api:
+    image: ${DOCKER_REGISTRY-}auth0api:${TAG}
+    container_name: Auth0.Api
+    
+    build:
+      context: ./Auth0.Api
+      dockerfile: Dockerfile
+      labels:
+        - "com.microsoft.visual-studio.project-name=Auth0.Api"
+
+  vendor.api:
+    image: ${DOCKER_REGISTRY-}vendorapi:${TAG}
+    container_name: Vendor.Api
+    
+    build:
+      context: ./Vendor.Api
+      dockerfile: Dockerfile
+      labels:
+        - "com.microsoft.visual-studio.project-name=Vendor.Api"

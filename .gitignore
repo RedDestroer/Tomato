@@ -4,6 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 WebApp.Api/WebApp.Api/wwwroot
+/**/*.Local.json
+/**/_appStart.log
 
 # User-specific files
 *.suo

@@ -1,0 +1,7 @@
+{
+    "Auth0": {
+        "Domain": "<replace with Domain and rename to appsettings.Local.json>",
+        "ClientId": "<replace with ClientId and rename to appsettings.Local.json>",
+        "ApiIdentifier": "https://quickstarts/api"
+    }
+}

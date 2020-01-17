@@ -18,10 +18,10 @@ COPY ["WebApp.Infrastructure/WebApp.Infrastructure.csproj", "WebApp.Infrastructu
 RUN dotnet restore "WebApp.Api/WebApp.Api.csproj"
 COPY . .
 WORKDIR "/src/WebApp.Api"
-RUN dotnet build -c Release -o /app/build
+RUN dotnet build -c Debug -o /app/build
 
 FROM build AS publish
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish -c Debug -o /app/publish
 
 FROM base AS final
 WORKDIR /app

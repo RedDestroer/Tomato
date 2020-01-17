@@ -14,7 +14,9 @@ class TomatoService implements ITomatoService {
 
   static getInstance(): TomatoService {
     if (!TomatoService._instance) {
-      const api = TomatoApi.create('https://localhost:5051/api');
+      const origin = window.location.origin;
+      const apiOrigin = origin === 'http://localhost:3000' ? 'https://localhost:5051' : origin;
+      const api = TomatoApi.create(`${apiOrigin}/api`);
 
       TomatoService._instance = new TomatoService(api);
     }

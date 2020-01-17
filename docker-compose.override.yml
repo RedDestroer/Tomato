@@ -1,0 +1,68 @@
+version: '3.4'
+
+services:
+  webapp.api:
+    env_file:
+      - .env
+
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENVIRONMENT}
+      - ASPNETCORE_URLS=http://+:80
+      #- ASPNETCORE_URLS=https://+:443;http://+:80
+      #- ASPNETCORE_HTTPS_PORT=5051
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+      - NUGET_PACKAGES=/root/.nuget/fallbackpackages2
+    
+    ports:
+      - 5050:80
+      #- 5051:443
+    
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${VS_DEBUG_PATH}/vs2017u5:/vsdbg:rw
+      - ${NUGET_FALLBACK_PATH}:/root/.nuget/fallbackpackages
+      - ${NUGET_FALLBACK_PATH2}:/root/.nuget/fallbackpackages2
+      
+  auth0.api:
+    env_file:
+      - .env
+
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENVIRONMENT}
+      - ASPNETCORE_URLS=http://+:80
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+      - NUGET_PACKAGES=/root/.nuget/fallbackpackages2
+    
+    ports:
+      - 5060:80
+    
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${VS_DEBUG_PATH}/vs2017u5:/vsdbg:rw
+      - ${NUGET_FALLBACK_PATH}:/root/.nuget/fallbackpackages
+      - ${NUGET_FALLBACK_PATH2}:/root/.nuget/fallbackpackages2
+  
+  vendor.api:
+    env_file:
+      - .env
+
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ENVIRONMENT}
+      - ASPNETCORE_URLS=http://+:80
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+      - NUGET_PACKAGES=/root/.nuget/fallbackpackages2
+    
+    ports:
+      - 5070:80
+    
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${VS_DEBUG_PATH}/vs2017u5:/vsdbg:rw
+      - ${NUGET_FALLBACK_PATH}:/root/.nuget/fallbackpackages
+      - ${NUGET_FALLBACK_PATH2}:/root/.nuget/fallbackpackages2

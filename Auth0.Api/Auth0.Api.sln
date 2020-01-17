@@ -3,7 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Api", "Auth0.Api\Auth0.Api.csproj", "{3C57DFF8-CD33-405C-91BA-A32FC91EB0EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.Api", "Auth0.Api\Auth0.Api.csproj", "{3C57DFF8-CD33-405C-91BA-A32FC91EB0EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{3EF88098-F272-4E47-B224-C1DC22445658}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{D8C3FCF8-0F71-406A-B4E7-D048A65DFCB0}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

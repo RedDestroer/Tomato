@@ -1,19 +1,36 @@
-version: "3.7"
+version: '3.4'
+
 services:
   webapp.api:
-    image: webappapi:dev
+    image: ${DOCKER_REGISTRY-}webappapi:${TAG}
+    container_name: WebApp.Api
     
     build:
-      dockerfile: ./WebApp.Api/Dockerfile
       context: ./WebApp.Api
+      dockerfile: Dockerfile
+      labels:
+        - "com.microsoft.visual-studio.project-name=WebApp.Api"
+        
+    depends_on:
+      - auth0.api
+      - vendor.api
+  
+  auth0.api:
+    image: ${DOCKER_REGISTRY-}auth0api:${TAG}
+    container_name: Auth0.Api
+    
+    build:
+      context: ./Auth0.Api
+      dockerfile: Dockerfile
+      labels:
+        - "com.microsoft.visual-studio.project-name=Auth0.Api"
 
-    environment:
-      ASPNETCORE_ENVIRONMENT: "Development"
-      ASPNETCORE_URLS: "https://+:443;http://+:80"
-      ASPNETCORE_HTTPS_PORT: 5051
-
-    ports:
-    - "5050:80"
-    - "5051:443"
-
-    entrypoint: tail webappapi:dev -f /dev/null
+  vendor.api:
+    image: ${DOCKER_REGISTRY-}vendorapi:${TAG}
+    container_name: Vendor.Api
+    
+    build:
+      context: ./Vendor.Api
+      dockerfile: Dockerfile
+      labels:
+        - "com.microsoft.visual-studio.project-name=Vendor.Api"

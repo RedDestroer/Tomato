@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Vendor.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Vendor.Api.Controllers.TomatoController.List">
+             <summary>
+             Gets API properties
+             </summary>
+             <returns>
+             Key value dictionary with API properties
+             </returns>
+             <remarks>
+             Sample request:
+            
+               GET /api
+             </remarks>
+             <response code="200">Ok</response>
+             <response code="400">If X-WebApp-Token not set or invalid</response>
+        </member>
+    </members>
+</doc>

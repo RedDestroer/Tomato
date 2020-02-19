@@ -1,5 +1,8 @@
 import TomatoApi from '../api/TomatoApi';
 
+const localhostUrl: string | null = process.env.REACT_APP_LOCAL_HOST_URL ?? null;
+const backendUrl: string | null = process.env.REACT_APP_LOCAL_BACKEND_URL ?? null;
+
 export interface ITomatoService {
   getApiProperties(): Promise<object>;
 }
@@ -15,7 +18,7 @@ class TomatoService implements ITomatoService {
   static getInstance(): TomatoService {
     if (!TomatoService._instance) {
       const origin = window.location.origin;
-      const apiOrigin = origin === 'http://localhost:3000' ? 'https://localhost:5051' : origin;
+      const apiOrigin = (origin === localhostUrl ? backendUrl : origin) ?? origin;
       const api = TomatoApi.create(`${apiOrigin}/api`);
 
       TomatoService._instance = new TomatoService(api);

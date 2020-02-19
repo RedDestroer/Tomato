@@ -3,7 +3,6 @@ using System.Net.Mime;
 using System.Reflection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using WebApp.Api.Attributes;
 
 namespace WebApp.Api.Controllers

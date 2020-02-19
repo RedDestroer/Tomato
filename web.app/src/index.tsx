@@ -10,12 +10,9 @@ import history from './utils/history';
 import { Auth0Provider } from './lib/auth0';
 import theme from './theme';
 import store from './store/configureStore';
-import { log } from './services/LoggerService';
 import { AUTH_CONFIG } from './config/configuration';
 
 const onRedirectCallback = (result?: RedirectLoginResult) => {
-  log(`auth0 onRedirectCallback called with result ${JSON.stringify(result)}`);
-
   // Clears auth0 query string parameters from url
   const targetUrl = result && result.appState && result.appState.targetUrl ? result.appState.targetUrl : window.location.pathname;
 

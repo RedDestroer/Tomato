@@ -11,8 +11,8 @@
     "profiles": {
         "Vendor.Api": {
             "commandName": "Project",
-            "launchBrowser": true,
-            "launchUrl": "api/values",
+            "launchBrowser": false,
+            "launchUrl": "api/",
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
